@@ -1,5 +1,7 @@
-import { Stack } from "expo-router";
+import { Stack, Slot } from "expo-router";
 import { useFonts } from "expo-font";
+import { Provider } from "../context/auth";
+import { TailwindProvider } from "tailwindcss-react-native";
 
 export const unstable_settings = {
     initialRouteName: "home"
@@ -20,9 +22,13 @@ const Layout = () => {
     }
 
     return (
-        <Stack initialRouteName="home">
-            <Stack.Screen name="home" />
-        </Stack>
+        <Provider>
+            <TailwindProvider platform="ios">
+                <Stack initialRouteName="home" >
+                    <Stack.Screen name="home" />
+                </Stack>
+            </TailwindProvider>
+        </Provider>
     );
 }
 
